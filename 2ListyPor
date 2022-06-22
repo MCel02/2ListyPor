@@ -1,0 +1,81 @@
+//Program porównujący długość dwóch list.
+#include<stdio.h>
+#include<stdlib.h>
+
+/* Struktura dla elementów listy */
+struct Element
+  {
+	int dane;
+	struct Element *nast;
+  };
+
+/* liczbenie elementów na liście */
+int znajdz_liczbeA(struct Element* a)
+  {
+	int liczba = 0;
+	struct Element* obecny = a;
+	while (obecny != NULL)
+  	{
+		liczba++;
+		obecny = obecny->nast;
+  	}
+	return liczba;
+  }
+int znajdz_liczbeB(struct Element* b)
+  {
+	int liczba = 0;
+	struct Element* obecny = b;
+	while (obecny != NULL)
+  	{
+		liczba++;
+		obecny = obecny->nast;
+  	}
+	return liczba;
+  }
+
+/* Przy punkcie odniesienia (wskaźnik do wskaźnika) do głowy
+listy i inta, dodaje nowy element na przód listy */
+void push(struct Element** glowa_ref, int nowe_dane)
+  {
+	/* alokowanie elementu */
+	struct Element* nowy_element =
+		(struct Element*) malloc(sizeof(struct Element));
+
+	/* wpisz dane */
+	nowy_element->dane = nowe_dane;
+
+	/* połącz starą listę z nowym elementm */
+	nowy_element->nast = (*glowa_ref);
+
+	/* przenieś głowę do wskazywania na nowy element */
+	(*glowa_ref) = nowy_element;
+	}
+
+/* Program główny */
+int main()
+	{
+
+	struct Element *a = NULL;
+	struct Element *b = NULL;
+	push(&a, 1);
+	push(&a, 2);
+	push(&a, 3);
+	push(&a, 3);
+
+	push(&b, 1);
+	push(&b, 2);
+	push(&b, 3);
+
+	/* Drukowanie funkcji liczenia emelentów */
+	printf("liczba of elements is %d\n", znajdz_liczbeA(a));
+	printf("liczba of elements is %d\n", znajdz_liczbeA(b));
+	
+	/*porównywanie obu tych liczb*/
+	if(znajdz_liczbeA(a)>znajdz_liczbeB(b))
+	printf ("Lista A jest dłuższa niż lista B.");
+    else
+    printf ("Lista B jest dłuższa niż lista A.");
+
+	return 0;
+
+    }
