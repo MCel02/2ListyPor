@@ -67,8 +67,8 @@ int main()
 	push(&b, 3);
 
 	/* Drukowanie funkcji liczenia emelentów */
-	printf("liczba of elements is %d\n", znajdz_liczbeA(a));
-	printf("liczba of elements is %d\n", znajdz_liczbeA(b));
+	printf("liczba elementów listy A: %d\n", znajdz_liczbeA(a));
+	printf("liczba elementów listy B: %d\n", znajdz_liczbeA(b));
 	
 	/*porównywanie obu tych liczb*/
 	if(znajdz_liczbeA(a)>znajdz_liczbeB(b))
